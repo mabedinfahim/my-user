@@ -10,7 +10,7 @@ const Login = () => {
                 <div classNameName="row">
                     <div className="d-grid col-5 mx-auto my-5 shadow-lg  bg-body rounded">
                         {login? <h4 className="text-center pt-3">Login</h4>:<h4 className="text-center pt-3">Register</h4>}
-                        <form className='px-3 py-4'>
+                        <form className='px-4 py-4'>
                             
                             <div className="mb-3 ">
                                 <label for="exampleInputEmail1" className="form-label">Email address</label>
