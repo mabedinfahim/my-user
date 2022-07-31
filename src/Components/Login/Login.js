@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import {useNavigate,useLocation} from 'react-router-dom'
+import {useNavigate,useLocation,Link} from 'react-router-dom'
 
 const Login = () => {
     const [userInfo,setUserInfo]=useState(
@@ -57,8 +57,9 @@ const Login = () => {
                             </div>
                             <div class="row mt-4">
                                 <div className="d-grid col-6 mx-auto">
-                                <button type="submit" className="btn btn-success">Submit</button>
+                                    <button type="submit" className="btn btn-success">Submit</button>
                                 </div>
+                                <p className="text-center pt-4">New to My-user?<Link to="/register">Register Now</Link></p>
                             </div>
                         </form>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import {Link} from 'react-router-dom'
 
 const Register = () => {
     const [confirmError,setConfirmError]=useState("")
@@ -61,6 +62,7 @@ const Register = () => {
                              <div className="d-grid col-6 mx-auto">
                              <button type="submit" className="btn btn-success">Submit</button>
                              </div>
+                             <p className="text-center pt-3">Already have an account? <Link to="/login">Login</Link> </p>
                          </div>
                      </form>
                  </div>
