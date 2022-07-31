@@ -1,8 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import {Link} from 'react-router-dom'
+import auth from '../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
+    const [user]=useAuthState(auth);
+
     return (
         <div>
             <div className="container-fluid">
@@ -29,7 +33,7 @@ const Header = () => {
                             <form className="d-flex">
                                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                                 <button className="btn btn-outline-success" type="submit">Search</button>
-                                <Link to="/" className="btn btn-outline-success">User</Link>
+                                {user? <div> <Link to="/" className="btn btn-outline-success">Sign out</Link> </div>:<Link to="/" className="btn btn-outline-success">User</Link>}
                             </form>
                             </div>
                         </div>
