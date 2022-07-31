@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import {Link} from 'react-router-dom'
+import {Link,useNavigate,useLocation} from 'react-router-dom'
 
 const Register = () => {
     const [confirmError,setConfirmError]=useState("")
@@ -22,6 +22,17 @@ const Register = () => {
         const handelWithInput=(e)=>{
             userInfo[e.target.name]=e.target.value;
         }
+
+
+        const [loginUser,loginLoading,loginError]=useAuthState(auth)
+
+          const navigate=useNavigate()
+          const location=useLocation()
+          const from=location.state?.from?.pathname || "/"
+  
+          if(loginUser){
+              navigate(from,{replace:true})
+          }
 
         const handelWithSubmit=(e)=>{
             e.preventDefault();
