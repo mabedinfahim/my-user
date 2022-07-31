@@ -1,3 +1,4 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {Link} from 'react-router-dom'
@@ -6,6 +7,7 @@ import CustomLink from '../CustomLink/CustomLink';
 
 const Header = () => {
     const [user]=useAuthState(auth);
+    
 
     return (
         <div>
@@ -26,14 +28,13 @@ const Header = () => {
                                 <li className="nav-item">
                                 <CustomLink to='/users' className="nav-link text-success" href="#">Users</CustomLink>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                 <CustomLink to='/login' className="nav-link text-success" href="#">Login</CustomLink>
-                                </li>
+                                </li> */}
                             </ul>
                             <form className="d-flex">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                                {user? <div> <Link to="/" className="btn btn-outline-success">Sign out</Link> </div>:<Link to="/" className="btn btn-outline-success">User</Link>}
+                                {user?.uid? <span className="d-flex justify-content-center align-content-center"> <p className="px-2">{user?.email}</p> <Link onClick={()=>signOut(auth)} to="/login" className="btn btn-outline-success" style={{width:"100px"}}>Sign out</Link> </span>:<Link to="/login" className="btn btn-outline-success">Login</Link>}
+                                <Link to="/register" className="btn btn-outline-success">Register</Link>
                             </form>
                             </div>
                         </div>
